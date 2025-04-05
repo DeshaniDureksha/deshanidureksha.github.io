@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/React-Portfolio/static/css/main.37d44700.css",
-    "main.js": "/React-Portfolio/static/js/main.bb55e5e6.js",
-    "static/js/453.bb257cf5.chunk.js": "/React-Portfolio/static/js/453.bb257cf5.chunk.js",
-    "static/media/profile.png": "/React-Portfolio/static/media/profile.f6cbbae4b24811969a07.png",
-    "static/media/estate-agent.png": "/React-Portfolio/static/media/estate-agent.c81858286be5cd8dd1e0.png",
-    "static/media/plane.png": "/React-Portfolio/static/media/plane.0f05f2460d4b11814e4e.png",
-    "static/media/carcare.png": "/React-Portfolio/static/media/carcare.b130a60083e0b0967bb6.png",
-    "static/media/ticket.png": "/React-Portfolio/static/media/ticket.f41f242ef3b906a8fc10.png",
-    "static/media/about.png": "/React-Portfolio/static/media/about.a09bcc5b1f1c321097e8.png",
-    "static/media/portfolio.png": "/React-Portfolio/static/media/portfolio.925c500e8de190662247.png",
-    "static/media/Deshani Rajapaksha Resume.pdf": "/React-Portfolio/static/media/Deshani Rajapaksha Resume.1bbfb5e994d1ccdb072f.pdf",
-    "index.html": "/React-Portfolio/index.html",
-    "main.37d44700.css.map": "/React-Portfolio/static/css/main.37d44700.css.map",
-    "main.bb55e5e6.js.map": "/React-Portfolio/static/js/main.bb55e5e6.js.map",
-    "453.bb257cf5.chunk.js.map": "/React-Portfolio/static/js/453.bb257cf5.chunk.js.map"
+    "main.css": "/static/css/main.0c2459e6.css",
+    "main.js": "/static/js/main.c5a0b31b.js",
+    "static/js/453.bb257cf5.chunk.js": "/static/js/453.bb257cf5.chunk.js",
+    "static/media/profile.png": "/static/media/profile.f6cbbae4b24811969a07.png",
+    "static/media/estate-agent.png": "/static/media/estate-agent.c81858286be5cd8dd1e0.png",
+    "static/media/plane.png": "/static/media/plane.0f05f2460d4b11814e4e.png",
+    "static/media/carcare.png": "/static/media/carcare.b130a60083e0b0967bb6.png",
+    "static/media/ticket.png": "/static/media/ticket.f41f242ef3b906a8fc10.png",
+    "static/media/about.png": "/static/media/about.a09bcc5b1f1c321097e8.png",
+    "static/media/portfolio.png": "/static/media/portfolio.925c500e8de190662247.png",
+    "static/media/Deshani Rajapaksha Resume.pdf": "/static/media/Deshani Rajapaksha Resume.1bbfb5e994d1ccdb072f.pdf",
+    "index.html": "/index.html",
+    "main.0c2459e6.css.map": "/static/css/main.0c2459e6.css.map",
+    "main.c5a0b31b.js.map": "/static/js/main.c5a0b31b.js.map",
+    "453.bb257cf5.chunk.js.map": "/static/js/453.bb257cf5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.37d44700.css",
-    "static/js/main.bb55e5e6.js"
+    "static/css/main.0c2459e6.css",
+    "static/js/main.c5a0b31b.js"
   ]
 }
