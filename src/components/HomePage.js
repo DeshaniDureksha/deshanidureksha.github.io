@@ -82,16 +82,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="scroll-down">
-        <a href="#about" onClick={handleScrollDown}>
-          <div className="mouse">
-            <div className="wheel"></div>
-          </div>
-          <div className="arrow">
-            <span></span>
-          </div>
-        </a>
-      </div>
     </div>
   );
 };
