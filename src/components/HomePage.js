@@ -17,6 +17,15 @@ const HomePage = () => {
     }
   }, []);
 
+  // Add this function to handle smooth scrolling
+  const handleScrollDown = (e) => {
+    e.preventDefault();
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="home-container">
       <div className="home-content">
@@ -74,7 +83,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="scroll-down">
-        <a href="#about">
+        <a href="#about" onClick={handleScrollDown}>
           <div className="mouse">
             <div className="wheel"></div>
           </div>
