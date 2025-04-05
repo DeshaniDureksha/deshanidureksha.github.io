@@ -1,0 +1,152 @@
+.skills-container {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg-dark);
+}
+
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.8rem 2rem;
+  margin: 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-dark);
+  transition: width 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--accent-dark);
+}
+
+.tab-btn:hover::after {
+  width: 100%;
+}
+
+.tab-btn.active {
+  color: var(--accent-dark);
+}
+
+.tab-btn.active::after {
+  width: 100%;
+}
+
+.skills-content {
+  animation: fadeIn 0.5s ease;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.skill-percentage {
+  color: var(--accent-dark);
+  font-weight: 500;
+}
+
+.skill-bar {
+  height: 8px;
+  background-color: var(--card-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-dark), var(--accent-dark));
+  border-radius: 4px;
+  position: relative;
+  width: 0;
+  animation: fillBar 1.5s ease forwards;
+}
+
+.skill-progress.soft {
+  background: linear-gradient(90deg, var(--accent-dark), var(--primary-dark));
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: var(--width); }
+}
+
+/* Add custom animation for each skill bar */
+.skill-item:nth-child(1) .skill-progress {
+  animation-delay: 0.1s;
+}
+.skill-item:nth-child(2) .skill-progress {
+  animation-delay: 0.2s;
+}
+.skill-item:nth-child(3) .skill-progress {
+  animation-delay: 0.3s;
+}
+.skill-item:nth-child(4) .skill-progress {
+  animation-delay: 0.4s;
+}
+.skill-item:nth-child(5) .skill-progress {
+  animation-delay: 0.5s;
+}
+.skill-item:nth-child(6) .skill-progress {
+  animation-delay: 0.6s;
+}
+.skill-item:nth-child(7) .skill-progress {
+  animation-delay: 0.7s;
+}
+.skill-item:nth-child(8) .skill-progress {
+  animation-delay: 0.8s;
+}
+.skill-item:nth-child(9) .skill-progress {
+  animation-delay: 0.9s;
+}
+
+@media screen and (max-width: 768px) {
+  .skills-container {
+    padding: 4rem 1.5rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tab-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+}
