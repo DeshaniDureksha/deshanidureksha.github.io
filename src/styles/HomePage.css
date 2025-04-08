@@ -306,40 +306,6 @@
   animation: scroll 2s infinite;
 }
 
-/* Add arrow styles for scroll indicator */
-.arrow {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.arrow span {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-bottom: 2px solid var(--text-dark);
-  border-right: 2px solid var(--text-dark);
-  transform: rotate(45deg);
-  margin: 0 auto;
-  animation: arrow-bounce 2s infinite;
-}
-
-@keyframes arrow-bounce {
-  0%, 100% { transform: rotate(45deg) translate(0, 0); }
-  50% { transform: rotate(45deg) translate(5px, 5px); }
-}
-
-@keyframes scroll {
-  0% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(10px); opacity: 0.5; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-/* Define fadeIn animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* Add responsive styles for smaller screens */
 @media (max-width: 992px) {
   .home-content {
