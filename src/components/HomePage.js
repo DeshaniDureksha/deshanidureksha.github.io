@@ -17,15 +17,6 @@ const HomePage = () => {
     }
   }, []);
 
-  // Add this function to handle smooth scrolling
-  const handleScrollDown = (e) => {
-    e.preventDefault();
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="home-container">
       <div className="home-content">
