@@ -27,13 +27,6 @@
   display: inline-block;
 }
 
-.section-title .underline {
-  height: 3px;
-  width: 80px;
-  background: var(--primary-dark);
-  margin: 0 auto 1rem;
-}
-
 .section-title p {
   font-size: 1.1rem;
   color: var(--text-dark);
