@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Projects.css';
 import carcareImg from '../assets/carcare.png';
 import estateImg from '../assets/estate-agent.png';
@@ -9,10 +9,57 @@ import ticketImg from '../assets/ticket.png';
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [animated, setAnimated] = useState(false);
+  const [titleAnimated, setTitleAnimated] = useState(false);
+  const [filtersAnimated, setFiltersAnimated] = useState(false);
+  const [cardsAnimated, setCardsAnimated] = useState([]);
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const filtersRef = useRef(null);
+  const cardsRef = useRef([]);
   
   useEffect(() => {
-    setAnimated(true);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            
+            if (target === titleRef.current && !titleAnimated) {
+              setTimeout(() => setTitleAnimated(true), 200);
+            }
+            
+            if (target === filtersRef.current && !filtersAnimated) {
+              setTimeout(() => setFiltersAnimated(true), 600);
+            }
+            
+            // Animate cards individually
+            cardsRef.current.forEach((card, index) => {
+              if (target === card && !cardsAnimated.includes(index)) {
+                setTimeout(() => {
+                  setCardsAnimated(prev => [...prev, index]);
+                }, 800 + (index * 200));
+              }
+            });
+          }
+        });
+      },
+      { 
+        threshold: 0.3,
+        rootMargin: '-50px 0px'
+      }
+    );
+
+    // Observe all elements
+    if (titleRef.current) observer.observe(titleRef.current);
+    if (filtersRef.current) observer.observe(filtersRef.current);
+    cardsRef.current.forEach(card => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [titleAnimated, filtersAnimated, cardsAnimated]);
 
   const projectsData = [
     {
@@ -23,8 +70,8 @@ const Projects = () => {
       category: "mobile",
       stack: ["React Native", "Nest.js", "Python", "MySQL", "RESTful APIs", "AWS S3"],
       github: "https://github.com/Pavith19/CarCare-Project",
-      liveDemo: "#",
-      period: "Sep 2024 - Present"
+      liveDemo: "https://www.carcareplusplus.lk/",
+      period: "Sep 2024"
     },
     {
       id: 2,
@@ -34,7 +81,7 @@ const Projects = () => {
       category: "software",
       stack: ["Java", "Spring Boot", "React.js", "WebSocket"],
       github: "https://github.com/DeshaniDureksha/Threaded-TicketSystem",
-      liveDemo: "#",
+      liveDemo: null,
       period: "Dec 2024"
     },
     {
@@ -45,7 +92,7 @@ const Projects = () => {
       category: "web",
       stack: ["HTML5", "CSS3", "JavaScript"],
       github: "https://github.com/DeshaniDureksha/Portfolio-Website",
-      liveDemo: "#",
+      liveDemo: null,
       period: "Nov 2024"
     },
     {
@@ -56,7 +103,7 @@ const Projects = () => {
       category: "web",
       stack: ["React.js", "JSON", "Local Storage", "CSP"],
       github: "https://github.com/DeshaniDureksha/Estate-Agent-WebApplication",
-      liveDemo: "#",
+      liveDemo: null,
       period: "Dec 2024"
     },
     {
@@ -67,7 +114,7 @@ const Projects = () => {
       category: "software",
       stack: ["Java", "OOP", "2D Arrays", "File I/O"],
       github: "https://github.com/DeshaniDureksha/PlaneManagement-System",
-      liveDemo: "#",
+      liveDemo: null,
       period: "Feb 2024"
     }
   ];
@@ -81,15 +128,21 @@ const Projects = () => {
     : projectsData.filter(project => project.category === activeFilter);
 
   return (
-    <section id="projects" className="projects-section">
+    <section id="projects" className="projects-section" ref={sectionRef}>
       <div className="container">
-        <div className={`section-title ${animated ? 'fade-in' : ''}`}>
+        <div 
+          ref={titleRef}
+          className={`section-title ${titleAnimated ? 'title-animate' : ''}`}
+        >
           <h2>My Projects</h2>
           <div className="underline"></div>
           <p>Here are some of my recent projects that showcase my technical skills and problem-solving abilities.</p>
         </div>
 
-        <div className={`project-filters ${animated ? 'fade-in' : ''}`}>
+        <div 
+          ref={filtersRef}
+          className={`project-filters ${filtersAnimated ? 'filters-animate' : ''}`}
+        >
           {['all', 'web', 'mobile', 'software'].map((cat) => (
             <button
               key={cat}
@@ -105,20 +158,22 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id} 
-              className={`project-card ${animated ? 'fade-in' : ''}`} 
-              style={{ animationDelay: `${0.2 * index}s` }}
+              ref={el => cardsRef.current[index] = el}
+              className={`project-card ${cardsAnimated.includes(index) ? 'card-animate' : ''}`}
             >
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
                 <div className="project-links">
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
                     {/* GitHub Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77A5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77A5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                   </a>
-                  <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="project-link">
-                    {/* Live Demo Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  </a>
+                  {project.liveDemo && (
+                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="project-link">
+                      {/* Live Demo Icon */}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  )}
                 </div>
               </div>
 

@@ -44,7 +44,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -60,16 +60,6 @@ h2 {
   position: relative;
 }
 
-h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--accent-light);
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-}
 
 h3 {
   font-size: 1.75rem;
@@ -92,7 +82,7 @@ a:hover {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
 }
 
 section {
